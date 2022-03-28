@@ -31,17 +31,16 @@ const resolvers = {
     Query: {
         getUser: (product, args, context) => {
             return {id: 1, email: 'support@apollographql.com'};
-        },
-        Users:{
-            user(obj){
-              console.log('obj', obj)
-                return {
-                    __typename: 'User',
-                    email: obj.email
-                }
-            }
         }
-    }
+    },
+    Users:{
+      user(obj){
+          return {
+              __typename: 'User',
+              email: obj.email
+          }
+      }
+  }
 }
 const server = new ApolloServer({ schema: buildSubgraphSchema({ typeDefs, resolvers }) });
 server.listen( {port: port} ).then(({ url }) => {

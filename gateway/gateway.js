@@ -1,5 +1,6 @@
 // Open Telemetry (optional)
 const { ApolloOpenTelemetry } = require('supergraph-demo-opentelemetry');
+const {serializeQueryPlan} = require('@apollo/query-planner');
 
 if (process.env.APOLLO_OTEL_EXPORTER_TYPE) {
   new ApolloOpenTelemetry({
@@ -32,7 +33,11 @@ if (embeddedSchema || true){
   console.log('Starting Apollo Gateway in managed mode ...');
 }
 
-const gateway = new ApolloGateway(config);
+const gateway = new ApolloGateway({...config, experimental_didResolveQueryPlan: function(options) {
+  if (options.requestContext.operationName !== 'IntrospectionQuery') {
+    console.log(serializeQueryPlan(options.queryPlan));
+  }
+}});
 
 const server = new ApolloServer({
   gateway,

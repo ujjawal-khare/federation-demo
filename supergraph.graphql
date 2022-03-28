@@ -30,7 +30,7 @@ type User
 }
 
 type Users {
-  email: String
+  email: ID
   id: Int
   user: User
 }

@@ -39,10 +39,10 @@
     "@types/node" "^10.1.0"
     long "^4.0.0"
 
-"@apollo/subgraph@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.3.1.tgz#33e2ca8f87a8b0bb988888de794361db04cedd95"
-  integrity sha512-MWqzfZEcvN86iwwgsgkFnkoBvv/wCdw/qyXjayuZ4wwQgVZ8NpFNbUxjRC0MwKNHwBU/ZH1oDHOnC8WbUuUMsg==
+"@apollo/subgraph@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.4.0.tgz#4c6fc2bcc03b1715e7bcb7071f79512f3c5cee1e"
+  integrity sha512-Fg9XGaXpFP+X2J5HswIin/0ksmZShdukBtmtbMgvxJs7wfStlr+7m8gice4YSXYm/nu4td+UxUAfaqUjLYiFbQ==
 
 "@apollographql/apollo-tools@^0.5.1":
   version "0.5.2"
