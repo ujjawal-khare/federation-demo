@@ -1,17 +1,9 @@
 subgraphs:
-  inventory:
-    routing_url: http://inventory:4000/graphql
+  nucleus:
+    routing_url: http://localhost:9999/graphql
     schema:
-      file: ./subgraphs/inventory/inventory.graphql
-  products:
-    routing_url: http://products:4000/graphql
-    schema:
-      file: ./subgraphs/products/products.graphql
+      file: ./subgraphs/nucleus/nucleus.graphql
   users:
-    routing_url: http://users:4000/graphql
+    routing_url: http://localhost:4000/graphql
     schema:
       file: ./subgraphs/users/users.graphql
-  pandas:
-    routing_url: http://pandas:4000/graphql
-    schema:
-      file: ./subgraphs/pandas/pandas.graphql

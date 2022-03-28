@@ -23,8 +23,8 @@ const embeddedSchema = process.env.APOLLO_SCHEMA_CONFIG_EMBEDDED == "true" ? tru
 
 const config = {};
 
-if (embeddedSchema){
-  const supergraph = "/etc/config/supergraph.graphql"
+if (embeddedSchema || true){
+  const supergraph = "../supergraph.graphql"
   config['supergraphSdl'] = readFileSync(supergraph).toString();
   console.log('Starting Apollo Gateway in local mode ...');
   console.log(`Using local: ${supergraph}`)
@@ -41,6 +41,6 @@ const server = new ApolloServer({
   subscriptions: false
 });
 
-server.listen( {port: port} ).then(({ url }) => {
+server.listen( {port: 4001} ).then(({ url }) => {
   console.log(`🚀 Graph Router ready at ${url}`);
 }).catch(err => {console.error(err)});

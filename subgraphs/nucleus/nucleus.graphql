@@ -1,0 +1,12 @@
+type Query {
+  getUser: Users
+}
+
+type Users{
+    id: Int
+    email: ID
+    user: User
+}
+extend type User @key(fields: "email") {
+  email: ID! @external
+}
