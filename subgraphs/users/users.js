@@ -1,19 +1,5 @@
-// Open Telemetry (optional)
-const { ApolloOpenTelemetry } = require('supergraph-demo-opentelemetry');
 const {getDirectives, mapSchema, MapperKind} = require('@graphql-tools/utils')
 const {defaultFieldResolver} = require('graphql')
-
-if (process.env.APOLLO_OTEL_EXPORTER_TYPE) {
-  new ApolloOpenTelemetry({
-    type: 'subgraph',
-    name: 'users',
-    exporter: {
-      type: process.env.APOLLO_OTEL_EXPORTER_TYPE, // console, zipkin, collector
-      host: process.env.APOLLO_OTEL_EXPORTER_HOST,
-      port: process.env.APOLLO_OTEL_EXPORTER_PORT,
-    }
-  }).setupInstrumentation();
-}
 
 const { ApolloServer, gql } = require('apollo-server');
 const { buildSubgraphSchema } = require('@apollo/subgraph');
@@ -84,17 +70,7 @@ const resolvers = {
         }
     }
 }
-const schema = buildSubgraphSchema({ typeDefs, resolvers,
-  plugins: [
-    ApolloServerPluginUsageReporting({
-      generateClientInfo: ({
-        request
-      }) => {
-        const headers = request.http && request.http.headers;
-        console.log('request ->>>>>>', request)
-      },
-    }),
-  ], })
+const schema = buildSubgraphSchema({ typeDefs, resolvers })
 const updatedSchema = upperDirectiveTransformer(schema)
 const server = new ApolloServer({ schema:  updatedSchema});
 server.listen( {port: port} ).then(({ url }) => {
