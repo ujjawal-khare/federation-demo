@@ -26,21 +26,11 @@ function authDirective(directiveName) {
             if (upperDirective) {
               // Get this field's original resolver
               const { resolve = defaultFieldResolver } = fieldConfig;
-               console.log('fieldConfig', resolve)
-               console.log('defaultFieldResolver',defaultFieldResolver)
-              //  console.log('fieldConfig',fieldConfig)
               // Replace the original resolver with a function that *first* calls
               // the original resolver, then converts its result to upper case
               fieldConfig.resolve = async function (source, args, context, info) {
                 let result
-                try{
-                   result = await resolve(source, args, context, info);
-                  console.log('result', resolve)
-                }
-                catch(e) {
-                  console.log('error', e)
-                }
-                console.log('source', source)
+                result = await resolve(source, args, context, info);
                 if (typeof result === 'string') {
                   return result.toUpperCase();
                 }
@@ -65,7 +55,7 @@ const typeDefs = gql(readFileSync('./users.graphql', { encoding: 'utf-8' }));
 const resolvers = {
     User: {
         __resolveReference: (reference) => {
-           console.log('wcdwc', reference)
+           console.log('reference', reference)
             return users.find(u => u.email == reference.email);
         }
     }
