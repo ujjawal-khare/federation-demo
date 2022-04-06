@@ -1,9 +1,0 @@
-type Query {
-  allPandas: [Panda]
-  panda(name: ID!): Panda
-}
-
-type Panda {
-    name:ID!
-    favoriteFood: String
-}

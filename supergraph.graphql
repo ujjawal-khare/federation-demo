@@ -16,6 +16,7 @@ directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
 directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
 
 type Query {
+  getRandomUser: User @join__field(graph: USERS)
   getUser: Users @join__field(graph: NUCLEUS)
 }
 

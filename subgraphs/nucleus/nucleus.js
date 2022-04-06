@@ -37,7 +37,8 @@ const resolvers = {
       user(obj){
           return {
               __typename: 'User',
-              email: obj.email
+              email: obj.email,
+              isSchemaShared: true
           }
       }
   }
